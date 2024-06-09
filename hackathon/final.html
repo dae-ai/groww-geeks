@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400&family=PT+Sans:wght@400;700&display=swap"
+    rel="stylesheet">
+  <title>GrowGeeks</title>
+
+<body>
+  <header>
+    <h1>Personality Development Advicer</h1>
+  </header>
+
+  <style>
+    main {
+      margin: auto;
+      padding: 20px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    header {
+      background-color: white;
+      color: teal;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    main {
+      margin: auto;
+    }
+
+    :root {
+      --font-family-primary: 'Vollkorn', serif;
+      --font-family-secondary: 'PT Sans', sans-serif;
+
+      --font-size-title: 32px;
+      --line-height-title: 1.4;
+      --font-size-caption: 14px;
+      --line-height-caption: 1.2;
+
+      --color-text: #222022;
+      --color-highlight-primary: #FFEF7E;
+      --color-highlight-secondary: #B7F9E9;
+      --border-radius-primary: 32px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+
+    }
+
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    @media (min-width: 576px) {
+      :root {
+        --font-size-title: 40px;
+      }
+    }
+
+    header {
+      background-color: rgb(250, 252, 252);
+      color: rgb(77, 169, 195);
+      text-align: center;
+      padding: 7px 0;
+    }
+
+    main {
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 960px;
+      border-radius: var(--border-radius-primary);
+      box-shadow: 24px 24px 80px rgba(0, 0, 0, 0.1);
+      padding: 20px 20px 28px 20px;
+      box-sizing: border-box;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+
+      @media (min-width: 576px) {
+        flex-direction: row;
+        align-items: center;
+        margin: 40px;
+        padding: 32px;
+      }
+    }
+
+    .card__image {
+      width: 100%;
+      max-height: 300px;
+      border-radius: var(--border-radius-primary);
+      object-fit: cover;
+      margin-bottom: 18px;
+
+      @media (min-width: 576px) {
+        width: 45%;
+        max-height: none;
+        min-height: 400px;
+        margin-bottom: 0;
+      }
+    }
+
+    .card__content {
+      @media (min-width: 576px) {
+        width: 55%;
+        padding-left: 40px;
+      }
+    }
+
+    .card__date {
+      display: block;
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-caption);
+      line-height: var(--line-height-caption);
+      text-transform: uppercase;
+      color: var(--color-text);
+      margin-bottom: 6px;
+
+      @media (min-width: 576px) {
+        margin-bottom: 8px;
+      }
+    }
+
+    .card__title {
+      font-family: var(--font-family-primary);
+      font-size: 20px;
+      /* Reduced font size */
+      line-height: var(--line-height-title);
+      color: var(--color-text);
+      box-decoration-break: clone;
+      background-image: linear-gradient(90deg, var(--color-highlight-primary), var(--color-highlight-secondary));
+      background-size: 100% 42%;
+      background-repeat: no-repeat;
+      background-position: 0 85%;
+      padding: 0 4px;
+      margin-left: -4px;
+    }
+
+    button:hover {
+      background-color: #9ba7e8;
+      text-emphasis-color: white;
+    }
+
+    h1 {
+      font-size: 48px;
+      /* adjust font size as needed */
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .form-container {
+      width: 350px;
+      height: 400px;
+      background-color: #f4fef5;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      padding: 20px 30px;
+      margin-top: 25px;
+    }
+
+    .title {
+      text-align: center;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      margin: 10px 0 30px 0;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 15px;
+    }
+
+    .input {
+      border-radius: 20px;
+      border: 1px solid #c0c0c0;
+      outline: 0 !important;
+      box-sizing: border-box;
+      padding: 12px 15px;
+    }
+
+    .page-link {
+      text-decoration: underline;
+      margin: 0;
+      text-align: end;
+      color: #747474;
+      text-decoration-color: #747474;
+    }
+
+    .page-link-label {
+      cursor: pointer;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .page-link-label:hover {
+      color: #000;
+    }
+
+    .form-btn {
+      padding: 10px 15px;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      border-radius: 20px;
+      border: 0 !important;
+      outline: 0 !important;
+      background: teal;
+      color: white;
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .form-btn:active {
+      box-shadow: none;
+    }
+
+    .sign-up-label {
+      margin: 0;
+      font-size: 10px;
+      color: #747474;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    .sign-up-link {
+      margin-left: 1px;
+      font-size: 11px;
+      text-decoration: underline;
+      text-decoration-color: teal;
+      color: teal;
+      cursor: pointer;
+      font-weight: 800;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    .buttons-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    .foot-panel {
+      background-color: #0f1111;
+      color: white;
+      height: 80px;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .pages {
+      padding-top: 25px;
+    }
+
+    .copyright {
+      padding-top: 5px;
+    }
+  </style>
+
+  <main>
+
+    <div class="card">
+      <img
+        src="https://classplusapp.com/growth/wp-content/uploads/2022/07/Importance-of-good-communication-skills-for-teachers.jpg"
+        class="card__image" alt="communication skills" />
+      <div class="card__content">
+        <time datetime="2021-03-30" class="card__date"> 1. Communication skills</time>
+        <span class="card__title">Communication skills, encompassing verbal, non-verbal, and written forms, are
+          indispensable for effective interaction and comprehension in personal and professional contexts.
+          These skills, vital for promoting understanding, empathy, and collaboration, play a pivotal role in
+          building trust, resolving conflicts, and achieving shared objectives, contributing to overall
+          success in both personal and professional life.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://prepareforenglish.com/wp-content/uploads/2020/11/Writing-and-Outlining-1024x576.jpg"
+        class="card__image" alt="writing skills" />
+      <div class="card__content">
+        <time datetime="2021-03-30" class="card__date">2. Writing Skills</time>
+        <span class="card__title">Proficient written communication skills, encompassing clarity, coherence, and
+          adaptability, are crucial for conveying ideas effectively in diverse contexts, from professional
+          emails to online platforms. Mastery of grammar, punctuation, and tone ensures credibility,
+          contributing to success in both traditional and digital communication realms.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://emeritus.org/in/wp-content/uploads/sites/3/2022/10/Technical-Skills_How-to-Them-Master-in-2022.jpg.optimal.jpg"
+        class="card__image" alt="technical skills" />
+      <div class="card__content">
+        <time datetime="2021-03-30" class="card__date">3. Technical Skills</time>
+        <span class="card__title">Technical skills, encompassing tools, technologies, and methods specific to a
+          field, drive problem-solving, innovation, and industry advancements. Continuous learning ensures
+          competitiveness, fostering collaboration and improving work outcomes for individuals contributing to
+          technological and societal progress.</span>
+      </div>
+    </div>
+
+    <style>
+      .main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #240046;
+        max-height: 420px;
+        max-width: 50%;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 7px 7px 10px 3px #24004628;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+        width: 300px;
+        margin: auto;
+        /* Center the form horizontally */
+      }
+
+
+      /* checkbox to switch from sign up to login */
+      #chk {
+        display: none;
+      }
+
+      /* Login */
+      .login {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .login label {
+        margin: 25% 0 5%;
+      }
+
+      label {
+        color: #fff;
+        font-size: 2rem;
+        justify-content: center;
+        display: flex;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+
+      }
+
+      .input {
+        width: 100%;
+        height: 30px;
+        background: #e0dede;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+      }
+
+      /* Register */
+      .register {
+        background: #eee;
+        border-radius: 60% / 10%;
+        transform: translateY(5%);
+        transition: 0.8s ease-in-out;
+      }
+
+      .register label {
+        color: #573b8a;
+        transform: scale(0.6);
+      }
+
+      #chk:checked~.register {
+        transform: translateY(-60%);
+      }
+
+      #chk:checked~.register label {
+        transform: scale(1);
+        margin: 10% 0 5%;
+      }
+
+      #chk:checked~.login label {
+        transform: scale(0.6);
+        margin: 5% 0 5%;
+      }
+
+      /* Button */
+      .form button {
+        width: 50%;
+        height: 30px;
+        margin: 12px auto 10%;
+        color: #fff;
+        background: #573b8a;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.2s ease-in;
+      }
+
+      .form button:hover {
+        background-color: #6d44b8;
+      }
+
+      .beautiful-button {
+        position: relative;
+        display: inline-block;
+        background: linear-gradient(to bottom, #f2f2f6, #4a4e91);
+        /* Gradient background */
+        color: white;
+        /* White text color */
+        font-family: "Segoe UI", sans-serif;
+        /* Stylish and legible font */
+        font-weight: bold;
+        font-size: 18px;
+        /* Large font size */
+        border: none;
+        /* No border */
+        border-radius: 30px;
+        /* Rounded corners */
+        padding: 14px 28px;
+        /* Large padding */
+        cursor: pointer;
+        /* Cursor on hover */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        /* Subtle shadow */
+        animation: button-shimmer 2s infinite;
+        transition: all 0.3s ease-in-out;
+        /* Smooth transition */
+        margin-top: 25px;
+
+      }
+
+      /* Hover animation */
+      .beautiful-button:hover {
+        background: linear-gradient(to bottom, #7676d1, #5b67b7);
+        animation: button-particles 1s ease-in-out infinite;
+        transform: translateY(-2px);
+      }
+
+      /* Click animation */
+      .beautiful-button:active {
+        transform: scale(0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Shimmer animation */
+      @keyframes button-shimmer {
+        0% {
+          background-position: left top;
+        }
+
+        100% {
+          background-position: right bottom;
+        }
+      }
+
+      /* Particle animation */
+      @keyframes button-particles {
+        0% {
+          background-position: left top;
+        }
+
+        100% {
+          background-position: right bottom;
+        }
+      }
+    </style>
+
+   
+
+    <center>
+      <button class="beautiful-button"><a href="improve.html">GET STARTED</a></button>
+  
+    </center>
+
+
+</body>
+
+</html>
+
+</center>
+
+<footer>
+  <div class="foot-panel">
+    <div class="pages">
+      <a>Conditions of Use</a>
+      <a>Privacy Notice</a>
+      <a>Your Ads Privacy Notice</a>
+    </div>
+    <div class="copyright">
+      &copy; GrowGeeks.com All Rights Reserved
+    </div>
+  </div>
+</footer>
+</main>
+</body>
+
+</html>

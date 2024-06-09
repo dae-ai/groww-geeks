@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling Effect</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .parallax {
+            /* Create a fixed background effect */
+            background-image: url('https://getwallpapers.com/wallpaper/full/9/d/8/1490504-cool-aviation-wallpapers-1920x1080-large-resolution.jpg'); /* Replace with your image URL */
+            min-height: 500px; /* Adjust the height as needed */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .parallax::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity here */
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            color: white; /* Text color to be visible on background */
+            text-align: center;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .light-section {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .dark-section {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="section light-section">
+        <h1>Welcome to Our Website</h1>
+        <p>Enhance your communication skills with our tips and resources.</p>
+    </header>
+
+    <div class="parallax">
+        <div class="content">
+            <h2>Parallax Section</h2>
+            <p>This section has a parallax scrolling effect.</p>
+        </div>
+    </div>
+
+    <section class="section light-section">
+        <h2>Regular Section</h2>
+        <p>This is a normal section with regular scrolling.</p>
+    </section>
+
+    <div class="parallax">
+        <div class="content">
+            <h2>Another Parallax Section</h2>
+            <p>Enjoy the smooth parallax effect as you scroll down.</p>
+        </div>
+    </div>
+
+    <section class="section dark-section">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out for more information.</p>
+    </section>
+
+</body>
+</html>

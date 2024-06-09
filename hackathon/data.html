@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Register Form</title>
+    <script src="./auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <style>
+        .main {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: #240046;
+            max-height: 420px;
+            max-width: 50%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 7px 7px 10px 3px #24004628;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 16px;
+            width: 300px;
+            margin: auto;
+            /* Center the form horizontally */
+        }
+
+
+        /* checkbox to switch from sign up to login */
+        #chk {
+            display: none;
+        }
+
+        /* Login */
+        .login {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .login label {
+            margin: 25% 0 5%;
+        }
+
+        label {
+            color: #fff;
+            font-size: 2rem;
+            justify-content: center;
+            display: flex;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+        }
+
+        .input {
+            width: 100%;
+            height: 30px;
+            background: #e0dede;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        /* Register */
+        .register {
+            background: #eee;
+            border-radius: 60% / 10%;
+            transform: translateY(5%);
+            transition: 0.8s ease-in-out;
+        }
+
+        .register label {
+            color: #573b8a;
+            transform: scale(0.6);
+        }
+
+        #chk:checked~.register {
+            transform: translateY(-60%);
+        }
+
+        #chk:checked~.register label {
+            transform: scale(1);
+            margin: 10% 0 5%;
+        }
+
+        #chk:checked~.login label {
+            transform: scale(0.6);
+            margin: 5% 0 5%;
+        }
+
+        /* Button */
+        .form button {
+            width: 50%;
+            height: 30px;
+            margin: 12px auto 10%;
+            color: #fff;
+            background: #573b8a;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s ease-in;
+        }
+
+        .form button:hover {
+            background-color: #6d44b8;
+        }
+    </style>
+</head>
+<script src="auth.js"></script>
+
+<body>
+
+    <center>
+        <div class="main">
+            <input type="checkbox" id="chk" aria-hidden="true" />
+            <div class="login">
+                <form class="form">
+                    <label for="chk" aria-hidden="true">Log in</label>
+                    <input class="input" type="email" name="email" id="email" placeholder="Email" required="" />
+                    <input class="input" type="password" name="pswd" id="pass" placeholder="Password" required="" />
+                    <button id="sub" type="submit">Log in</button>
+                    <script>
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyA4ru1hLqozyWWQSYTmQbLr5JNH6-ATf28",
+                            authDomain: "login-dd3b4.firebaseapp.com",
+                            projectId: "login-dd3b4",
+                            storageBucket: "login-dd3b4.appspot.com",
+                            messagingSenderId: "328496198056",
+                            appId: "1:328496198056:web:0445c1848b488eb42f2d9d"
+                        };
+                        // Initialize Firebase
+                        firebase.initializeApp(firebaseConfig);
+
+                        // Get authentication instance
+                        const auth = firebase.auth();
+
+                        // Get submit button
+                        const submit = document.getElementById("sub");
+
+                        // Add event listener for submit button click
+                        submit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            
+                            const email = document.getElementById("email").value;
+                            const password = document.getElementById("pass").value;
+                            firebase
+                                .auth()
+                                .createUserWithEmailAndPassword(email, password)
+                                .then((userCredential) => {
+                                    const user = userCredential.user;
+                                    alert("Account created successfully");
+                                })
+                                .catch((error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                    alert(errorMessage);
+                                });
+                        });
+                    </script>
+                </form>
+            </div>
+            <div class="register">
+                <form class="form">
+                    <label for="chk" aria-hidden="true">Register</label>
+                    <input class="input" type="text" name="txt" placeholder="Username" required="" />
+                    <input class="input" type="email" name="email" placeholder="Email" required="" />
+                    <input class="input" type="password" name="pswd" placeholder="Password" required="" />
+                    <button>Register</button>
+                </form>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>
